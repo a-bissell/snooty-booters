@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Snooty Booters — 2026 Schedule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f5efe1;
+    --paper-deep: #ebe2cd;
+    --crimson: #c8362d;
+    --mustard: #e8b647;
+    --teal: #2d6e6a;
+    --line: #1a1a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    line-height: 1.5;
+    padding: 32px 16px 64px;
+    background-image:
+      radial-gradient(circle at 15% 25%, rgba(200,54,45,0.04) 0, transparent 50%),
+      radial-gradient(circle at 85% 75%, rgba(45,110,106,0.05) 0, transparent 50%);
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    border: 3px solid var(--ink);
+    background: var(--paper-deep);
+    padding: 28px 32px 24px;
+    position: relative;
+    margin-bottom: 28px;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .title {
+    font-family: 'Bungee Shade', cursive;
+    font-size: clamp(40px, 7vw, 64px);
+    line-height: 0.95;
+    color: var(--crimson);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    font-family: 'Bungee', cursive;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    border-top: 1.5px solid var(--ink);
+    padding-top: 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .meta-row strong {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    display: block;
+    opacity: 0.6;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  /* QUICK STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0;
+    border: 3px solid var(--ink);
+    background: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: 18px 16px;
+    text-align: center;
+    border-right: 2px solid var(--ink);
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bungee', cursive;
+    font-size: 32px;
+    color: var(--crimson);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 6px;
+    opacity: 0.7;
+  }
+
+  /* GAMES */
+  .games-header {
+    font-family: 'Bungee', cursive;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .games-header::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: var(--ink);
+  }
+
+  .game {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    border: 2.5px solid var(--ink);
+    background: #fff;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    box-shadow: 5px 5px 0 var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .game:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .game.theme {
+    background: linear-gradient(135deg, #fff 0%, #fff 60%, var(--mustard) 60%, var(--mustard) 100%);
+  }
+
+  .date-block {
+    text-align: center;
+    border-right: 2px solid var(--ink);
+    padding-right: 14px;
+  }
+  .date-day {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .date-num {
+    font-family: 'Bungee', cursive;
+    font-size: 28px;
+    color: var(--crimson);
+    line-height: 1;
+    margin: 2px 0;
+  }
+  .date-month {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .matchup-block {
+    min-width: 0;
+  }
+
+  .matchup-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1.5px solid var(--ink);
+    font-weight: 500;
+  }
+  .badge.home { background: var(--crimson); color: var(--paper); border-color: var(--crimson); }
+  .badge.away { background: var(--teal); color: var(--paper); border-color: var(--teal); }
+  .badge.theme-night {
+    background: var(--mustard);
+    color: var(--ink);
+  }
+  .badge.bonus {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .opponent {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .opponent .vs {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--crimson);
+    font-size: 16px;
+    margin-right: 4px;
+  }
+
+  .location {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    opacity: 0.75;
+  }
+  .location a {
+    color: var(--teal);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .location a:hover { color: var(--crimson); }
+
+  .time-block {
+    text-align: right;
+    font-family: 'Bungee', cursive;
+    font-size: 18px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .time-block .ampm {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-left: 2px;
+  }
+
+  /* INFO PANEL */
+  .info-panel {
+    margin-top: 32px;
+    border: 3px solid var(--ink);
+    background: var(--paper-deep);
+    padding: 24px 28px;
+    box-shadow: 6px 6px 0 var(--teal);
+  }
+  .info-panel h3 {
+    font-family: 'Bungee', cursive;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+    color: var(--crimson);
+  }
+  .info-panel p {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .info-panel a {
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .swatch {
+    width: 14px; height: 14px;
+    border: 1.5px solid var(--ink);
+    display: inline-block;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 36px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    opacity: 0.55;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .game {
+      grid-template-columns: 70px 1fr;
+      gap: 14px;
+      padding: 14px 16px;
+    }
+    .time-block {
+      grid-column: 2;
+      text-align: left;
+      font-size: 16px;
+      margin-top: 4px;
+    }
+    .opponent { font-size: 18px; }
+    .date-num { font-size: 24px; }
+    .stat { padding: 14px 8px; }
+    .stat-num { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="eyebrow">
+      <span>MSCR Summer Kickball · Monona Division</span>
+      <span>2026 Season</span>
+    </div>
+    <h1 class="title">Snooty Booters</h1>
+    <div class="subtitle">⚽ FIELD OF DREAMS, FOOT OF FURY ⚽</div>
+    <div class="meta-row">
+      <div>
+        <strong>Coach</strong>
+        Cook
+      </div>
+      <div>
+        <strong>Field</strong>
+        Olbrich · 3400 Atwood Ave
+      </div>
+      <div>
+        <strong>Game Day</strong>
+        Wednesdays
+      </div>
+      <div>
+        <strong>Format</strong>
+        Round Robin · Doubleheaders
+      </div>
+    </div>
+  </header>
+
+  <!-- QUICK STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Games</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Weeks</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Home</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Away</div></div>
+  </div>
+
+  <!-- GAMES -->
+  <div class="games-header">SCHEDULE</div>
+
+  <!-- GAME 1 -->
+  <div class="game">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">13</div>
+      <div class="date-month">May</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge home">Home</span>
+        <span class="badge">Week 1</span>
+      </div>
+      <div class="opponent"><span class="vs">vs</span>1st Round Draft Kicks</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 3</a></div>
+    </div>
+    <div class="time-block">8:20<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 2 -->
+  <div class="game">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">20</div>
+      <div class="date-month">May</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge away">Away</span>
+        <span class="badge">Week 2</span>
+      </div>
+      <div class="opponent"><span class="vs">@</span>Kicktastrophe</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 4</a></div>
+    </div>
+    <div class="time-block">6:30<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 3 -->
+  <div class="game theme">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">27</div>
+      <div class="date-month">May</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge away">Away</span>
+        <span class="badge">Week 3</span>
+        <span class="badge theme-night">🎭 Costume Party</span>
+      </div>
+      <div class="opponent"><span class="vs">@</span>Just for Fun</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 3</a></div>
+    </div>
+    <div class="time-block">7:25<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 4 -->
+  <div class="game">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">3</div>
+      <div class="date-month">Jun</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge away">Away</span>
+        <span class="badge">Week 4</span>
+      </div>
+      <div class="opponent"><span class="vs">@</span>Bar Flies</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 4</a></div>
+    </div>
+    <div class="time-block">6:30<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 5 -->
+  <div class="game theme">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">10</div>
+      <div class="date-month">Jun</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge home">Home</span>
+        <span class="badge">Week 5</span>
+        <span class="badge theme-night">🎂 MSCR 100th · Vintage</span>
+      </div>
+      <div class="opponent"><span class="vs">vs</span>A Kickball Team</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 3</a></div>
+    </div>
+    <div class="time-block">8:20<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 6 -->
+  <div class="game theme">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">10</div>
+      <div class="date-month">Jun</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge home">Home</span>
+        <span class="badge bonus">Bonus Game</span>
+        <span class="badge theme-night">🎂 MSCR 100th · Vintage</span>
+      </div>
+      <div class="opponent"><span class="vs">vs</span>Meat Balls</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 4</a></div>
+    </div>
+    <div class="time-block">9:15<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 7 -->
+  <div class="game">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">17</div>
+      <div class="date-month">Jun</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge away">Away</span>
+        <span class="badge">Week 6</span>
+      </div>
+      <div class="opponent"><span class="vs">@</span>Goofballs</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 3</a></div>
+    </div>
+    <div class="time-block">7:25<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 8 -->
+  <div class="game">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">24</div>
+      <div class="date-month">Jun</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge home">Home</span>
+        <span class="badge">Week 7</span>
+      </div>
+      <div class="opponent"><span class="vs">vs</span>Kick the Ball Not the Bucket</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 4</a></div>
+    </div>
+    <div class="time-block">7:25<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 9 -->
+  <div class="game theme">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">1</div>
+      <div class="date-month">Jul</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge away">Away</span>
+        <span class="badge">Week 8</span>
+        <span class="badge theme-night">📻 Decades Night</span>
+      </div>
+      <div class="opponent"><span class="vs">@</span>Aces of Bases</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 3</a></div>
+    </div>
+    <div class="time-block">6:30<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- GAME 10 -->
+  <div class="game">
+    <div class="date-block">
+      <div class="date-day">Wed</div>
+      <div class="date-num">8</div>
+      <div class="date-month">Jul</div>
+    </div>
+    <div class="matchup-block">
+      <div class="matchup-meta">
+        <span class="badge home">Home</span>
+        <span class="badge">Week 9</span>
+      </div>
+      <div class="opponent"><span class="vs">vs</span>Cerveceros</div>
+      <div class="location"><a href="https://maps.google.com/maps?q=3400+atwood+ave" target="_blank">Olbrich Field 3</a></div>
+    </div>
+    <div class="time-block">7:25<span class="ampm">PM</span></div>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-panel">
+    <h3>Need to Know</h3>
+    <p><strong>Field:</strong> All games are at Olbrich Park, 3400 Atwood Ave, Madison, WI 53714. Fields 3 and 4 are side-by-side.</p>
+    <p><strong>Weather check:</strong> After 4:00 PM on game day, check the <a href="https://docs.google.com/spreadsheets/d/153PhyHCUwP0yCYc3vY1JKpG7ANmxy00lFhRH1xoinFA/edit#gid=0" target="_blank">MSCR weather sheet</a> for cancellations.</p>
+    <p><strong>Forfeit before 4 PM:</strong> Email asld@madison.k12.wi.us or call 608-204-3024. After 4 PM: 608-204-3029.</p>
+    <p><strong>Bonus game:</strong> June 10 has a 9:15 PM extra game so all 11 teams hit 10 games on the season.</p>
+    <div class="legend">
+      <div class="legend-item"><span class="swatch" style="background:#c8362d"></span> Home</div>
+      <div class="legend-item"><span class="swatch" style="background:#2d6e6a"></span> Away</div>
+      <div class="legend-item"><span class="swatch" style="background:#e8b647"></span> Theme Night</div>
+    </div>
+  </div>
+
+  <footer>
+    Source: mscrsportsleagues.org · Schedule rev. May 5, 2026
+  </footer>
+
+</div>
+</body>
+</html>
